@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.evidence {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.createUpdate {
+  margin-top: 20px !important;
+  color: white !important;
+  background-color: #3F50B5 !important
+}
+
+.row {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.column{
+  display: flex !important;
+  flex-direction: column;
+}
