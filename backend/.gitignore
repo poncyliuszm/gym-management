@@ -25,3 +25,10 @@ HELP.md
 /dist/
 /nbdist/
 /.nb-gradle/
+
+classes/
+frontend/node/
+frontend/node_modules/
+backend/build/
+*.log
+logs/
