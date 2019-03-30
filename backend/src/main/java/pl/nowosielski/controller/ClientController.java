@@ -1,9 +1,7 @@
 package pl.nowosielski.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.nowosielski.model.Client;
 import pl.nowosielski.repository.ClientRepository;
 
@@ -23,5 +21,10 @@ public class ClientController {
     @GetMapping("/list")
     public List<Client> list() {
         return clientRepository.findAll();
+    }
+
+    @PostMapping("/save")
+    public void save(@RequestBody Client client) {
+        clientRepository.save(client);
     }
 }

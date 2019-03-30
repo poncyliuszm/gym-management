@@ -1,16 +1,25 @@
 package pl.nowosielski.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Klient")
-public class Client {
+@Table(name = "Pracownik")
+public class Worker {
 
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Klient")
+    @Column(name = "Id_Pracownik")
     private Integer id;
+
+    @Column(name = "Loginn")
+    private String login;
+
+    @Column(name = "Haslo")
+    private String password;
 
     @Column(name = "Imie")
     private String name;
@@ -29,6 +38,25 @@ public class Client {
 
     @Column(name = "E_mail")
     private String email;
+
+    @Column(name = "Id_Specjalizacja")
+    private Integer roleId;
+
+    public Worker() {
+    }
+
+    public Worker(Worker worker) {
+        this.id = worker.id;
+        this.login = worker.login;
+        this.password = worker.password;
+        this.name = worker.name;
+        this.surname = worker.surname;
+        this.date = worker.date;
+        this.address = worker.address;
+        this.phone = worker.phone;
+        this.email = worker.email;
+        this.roleId = worker.roleId;
+    }
 
     public Integer getId() {
         return id;
@@ -84,5 +112,29 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }
