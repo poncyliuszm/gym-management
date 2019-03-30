@@ -1,0 +1,20 @@
+.auto-margin {
+  margin: auto;
+}
+
+.header {
+  font-weight: 400;
+  font-size: 1.5em;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.form-width {
+  width: 200px
+}
+
+.form-element-padding {
+  padding-top: 10px;
+}

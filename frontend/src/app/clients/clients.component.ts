@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ClientsService} from '../services/clients.service';
+import {ClientService} from '../services/client.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,7 +12,7 @@ export class ClientsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'surname', 'address', 'phone', 'email'];
   clientsDataSource: any[] = [];
 
-  constructor(private http: HttpClient, private clientsService: ClientsService, private router: Router) {
+  constructor(private http: HttpClient, private clientsService: ClientService, private router: Router) {
   }
 
   ngOnInit() {

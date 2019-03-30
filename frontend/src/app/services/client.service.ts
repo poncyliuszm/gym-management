@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable()
-export class ClientsService {
+export class ClientService {
 
   constructor(private http: HttpClient) {
 
@@ -11,5 +11,9 @@ export class ClientsService {
 
   list() {
     return this.http.get(environment.appContext + '/client/list');
+  }
+
+  save(user: any) {
+    return this.http.post(environment.appContext + '/client/save', user);
   }
 }

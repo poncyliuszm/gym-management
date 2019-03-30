@@ -1,25 +1,70 @@
-<div>
+<div class="row body" style="overflow: hidden;">
+
   <div class="column" style="width: 100%">
+    <div class="row" style="background: #eee; padding: 0 50px; justify-content: space-between;min-height: 120px;">
+      <div class="flex-row">
+        <div class="container flex-row">
+          <div>
+            <button (click)="goBack()" color="white" mat-mini-fab style="margin-right: 40px">
+              <mat-icon>navigate_before</mat-icon>
 
-
-    <form>
-
-      <div style="padding: 15px">
-        <div style="margin-left: 15px">
-          <div class="row space-between">
-
-            <div>
-              <mat-form-field style="width: 100%">
-                <input matInput placeholder="Imię">
-              </mat-form-field>
-            </div>
-
+            </button>
           </div>
-
+          <label class="mat-h1 my-account-header">Dodaj użytkownika</label>
         </div>
       </div>
-    </form>
+    </div>
 
+    <div class="whiteboard" style="overflow: auto;">
+      <mat-card class="user-add-form main auto-margin" style="min-width: 400px;">
+
+        <mat-card-content>
+          <form #formBasic="ngForm" class="width-100">
+            <div style="padding: 15px">
+              <div style="margin-left: 15px">
+                <div class="row space-between">
+                  <div>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.name" id="name" matInput name="name" placeholder="Imię" required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.surname" id="surname" matInput name="surname" placeholder="Nazwisko"
+                             required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.date" id="date" matInput name="date" placeholder="Data urodzenia"
+                             required
+                             type="date">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.address" id="address" matInput name="address" placeholder="Adres"
+                             required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.phone" id="phone" matInput name="phone" placeholder="Nr tel." required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="user.email" id="email" matInput name="email" placeholder="E-mail" required
+                             type="text">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="full-width form-btn-ground" style="margin-bottom: 10px">
+              <button (click)="addUser(formBasic)" color="primary" mat-raised-button
+                      style="border-radius: 20px; display: flex; margin: auto;"
+                      type="submit">Dodaj użytkownika
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-
 </div>
+
