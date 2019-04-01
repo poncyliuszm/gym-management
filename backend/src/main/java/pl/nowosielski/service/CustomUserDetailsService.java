@@ -16,12 +16,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     private WorkerRepository workerRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Worker worker = workerRepository.findByName(username);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        Worker worker = workerRepository.findByLogin(login);
         if (worker == null)
-            throw new UsernameNotFoundException((username));
+            throw new UsernameNotFoundException((login));
         return new CustomUserDetails(worker);
     }
-
 
 }
