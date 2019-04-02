@@ -16,4 +16,16 @@ export class ClientService {
   save(user: any) {
     return this.http.post(environment.appContext + '/client/save', user);
   }
+
+  getClient(id: any) {
+    return this.http.get(environment.appContext + '/client/' + id);
+  }
+
+  update(client: any) {
+    return this.http.put(environment.appContext + '/client', client);
+  }
+
+  delete(id: any) {
+    return this.http.delete(environment.appContext + '/client/' + id);
+  }
 }

@@ -10,7 +10,7 @@
 
             </button>
           </div>
-          <label class="mat-h1 my-account-header">Dodaj użytkownika</label>
+          <label class="mat-h1 my-account-header">Edytuj użytkownika</label>
         </div>
       </div>
     </div>
@@ -25,31 +25,31 @@
                 <div class="row space-between">
                   <div>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.name" id="name" matInput name="name" placeholder="Imię" required
+                      <input [(ngModel)]="client.name" id="name" matInput name="name" placeholder="Imię" required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.surname" id="surname" matInput name="surname" placeholder="Nazwisko"
+                      <input [(ngModel)]="client.surname" id="surname" matInput name="surname" placeholder="Nazwisko"
                              required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.date" [matDatepicker]="myDatepicker" id="date" matInput name="date"
+                      <input [(ngModel)]="client.date" [matDatepicker]="myDatepicker" id="date" matInput name="date"
                              placeholder="Data urodzenia" required>
                       <mat-datepicker-toggle [for]="myDatepicker" matSuffix></mat-datepicker-toggle>
                       <mat-datepicker #myDatepicker></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.address" id="address" matInput name="address" placeholder="Adres"
+                      <input [(ngModel)]="client.address" id="address" matInput name="address" placeholder="Adres"
                              required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.phone" id="phone" matInput name="phone" placeholder="Nr tel." required
+                      <input [(ngModel)]="client.phone" id="phone" matInput name="phone" placeholder="Nr tel." required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="user.email" id="email" matInput name="email" placeholder="E-mail" required
+                      <input [(ngModel)]="client.email" id="email" matInput name="email" placeholder="E-mail" required
                              type="text">
                     </mat-form-field>
                   </div>
@@ -57,9 +57,9 @@
               </div>
             </div>
             <div class="full-width form-btn-ground" style="margin-bottom: 10px">
-              <button (click)="addUser(formBasic)" color="primary" mat-raised-button
+              <button (click)="save(formBasic)" color="primary" mat-raised-button
                       style="border-radius: 20px; display: flex; margin: auto;"
-                      type="submit">Dodaj użytkownika
+                      type="submit">Zapisz
               </button>
             </div>
           </form>

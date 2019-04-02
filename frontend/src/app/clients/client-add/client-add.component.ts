@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {ClientService} from "../../services/client.service";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-client-add',
@@ -18,7 +19,7 @@ export class ClientAddComponent implements OnInit {
   };
 
 
-  constructor(private router: Router, private clientService: ClientService) {
+  constructor(private router: Router, private clientService: ClientService, private matSnackBar: MatSnackBar) {
 
   }
 
@@ -31,10 +32,13 @@ export class ClientAddComponent implements OnInit {
 
   addUser(form) {
     if (form.valid) {
-      this.user['id'] = 2;
+      // this.user['id'] = 2;
       this.clientService.save(this.user)
         .subscribe((data: any) => {
-          console.log(data);
+          this.router.navigate(['/clients']);
+          this.matSnackBar.open("Pomyślnie dodano klienta", "Zamknij", {
+            duration: 4000
+          });
         });
     }
   }

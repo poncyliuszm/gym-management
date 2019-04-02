@@ -4,16 +4,20 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ClientsComponent} from './clients/clients.component';
+import {ClientsComponent, DeleteUserDialog} from './clients/clients.component';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatIconRegistry,
   MatInputModule,
-  MatListModule, MatSelectModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatSelectModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatTableModule,
   MatToolbarModule
 } from "@angular/material";
@@ -29,6 +33,9 @@ import {AuthService} from "./services/auth.service";
 import {InterceptService} from "./services/interceptService";
 import {AuthGuard} from "./services/auth-guard.service";
 import {LoaderService} from "./services/LoaderService";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ClientEditComponent} from './clients/client-edit/client-edit.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -38,7 +45,12 @@ import {LoaderService} from "./services/LoaderService";
     HomeComponent,
     MainNavComponent,
     ClientAddComponent,
-    LoginComponent
+    LoginComponent,
+    ClientEditComponent,
+    DeleteUserDialog
+  ],
+  entryComponents: [
+    DeleteUserDialog
   ],
   imports: [
     BrowserModule,
@@ -51,14 +63,18 @@ import {LoaderService} from "./services/LoaderService";
     LayoutModule,
     MatToolbarModule,
     MatIconModule,
-    // MatIconRegistry,
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     ClientService,
