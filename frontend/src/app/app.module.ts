@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ClientsComponent, DeleteUserDialog} from './clients/clients.component';
+import {ClientsComponent, DeleteClientDialog} from './clients/clients.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -36,6 +36,10 @@ import {LoaderService} from "./services/LoaderService";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ClientEditComponent} from './clients/client-edit/client-edit.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {DeleteWorkerDialog, WorkersComponent} from './workers/workers.component';
+import {WorkerAddComponent} from './workers/worker-add/worker-add.component';
+import {WorkerEditComponent} from './workers/worker-edit/worker-edit.component';
+import {WorkerService} from "./services/worker.service";
 
 
 @NgModule({
@@ -47,10 +51,15 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ClientAddComponent,
     LoginComponent,
     ClientEditComponent,
-    DeleteUserDialog
+    DeleteClientDialog,
+    DeleteWorkerDialog,
+    WorkersComponent,
+    WorkerAddComponent,
+    WorkerEditComponent
   ],
   entryComponents: [
-    DeleteUserDialog
+    DeleteClientDialog,
+    DeleteWorkerDialog
   ],
   imports: [
     BrowserModule,
@@ -82,6 +91,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     AuthGuard,
     InterceptService,
     LoaderService,
+    WorkerService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

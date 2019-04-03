@@ -1,46 +1,47 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {ClientService} from '../services/client.service';
-import {Router} from "@angular/router";
-import {SelectionModel} from "@angular/cdk/collections";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
+import {SelectionModel} from "@angular/cdk/collections";
+import {HttpClient} from "@angular/common/http";
+import {ClientService} from "../services/client.service";
+import {Router} from "@angular/router";
+import {WorkerService} from "../services/worker.service";
 
 @Component({
-  selector: 'app-clients',
-  templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.css']
+  selector: 'app-users',
+  templateUrl: './workers.component.html',
+  styleUrls: ['./workers.component.css']
 })
-export class ClientsComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'name', 'surname', 'address', 'phone', 'email'];
-  clientsDataSource = new MatTableDataSource();
+export class WorkersComponent implements OnInit {
+  displayedColumns: string[] = ['select', 'position', 'login', 'name', 'surname', 'role', 'address', 'phone', 'email'];
+  workersDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
   constructor(private http: HttpClient,
-              private clientsService: ClientService,
+              private workerService: WorkerService,
               private router: Router,
               private matSnackBar: MatSnackBar,
               private matDialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getClients();
+    this.getWorkers();
   }
 
   checkboxLabel(row?: any): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  addClient() {
-    this.router.navigate(['clients/add'])
+  addWorker() {
+    this.router.navigate(['workers/add'])
   }
 
-  editClient() {
-    this.router.navigate(['clients/edit', this.selection.selected[0].id]);
+  editWorker() {
+    this.router.navigate(['workers/edit', this.selection.selected[0].id]);
 
   }
 
   openDeleteDialog() {
-    let dialogRef = this.matDialog.open(DeleteClientDialog, {});
+    let dialogRef = this.matDialog.open(DeleteWorkerDialog, {});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true)
@@ -51,21 +52,21 @@ export class ClientsComponent implements OnInit {
   }
 
   deleteClient() {
-    this.clientsService.delete(this.selection.selected[0].id)
+    this.workerService.delete(this.selection.selected[0].id)
       .subscribe((data => {
-        this.getClients();
-        this.matSnackBar.open("Pomyslnie usunięto klienta", "Zamknij", {
+        this.getWorkers();
+        this.matSnackBar.open("Pomyslnie usunięto pracownika", "Zamknij", {
           duration: 3000
         })
       }))
   }
 
-  private getClients() {
-    this.clientsService.list()
+  private getWorkers() {
+    this.workerService.list()
       .subscribe((data: any) => {
         let counter = 1;
         data.forEach(c => c['position'] = counter++);
-        this.clientsDataSource = new MatTableDataSource(data);
+        this.workersDataSource = new MatTableDataSource(data);
       })
   }
 }
@@ -79,9 +80,9 @@ export class ClientsComponent implements OnInit {
     "  <button mat-button [mat-dialog-close]=\"false\" tabindex=\"-1\">Anuluj</button>\n" +
     "</mat-dialog-actions>"
 })
-export class DeleteClientDialog {
+export class DeleteWorkerDialog {
 
-  constructor(public dialogRef: MatDialogRef<DeleteClientDialog>,
+  constructor(public dialogRef: MatDialogRef<DeleteWorkerDialog>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 

@@ -6,13 +6,19 @@ import {ClientAddComponent} from "./clients/client-add/client-add.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./services/auth-guard.service";
 import {ClientEditComponent} from "./clients/client-edit/client-edit.component";
+import {WorkersComponent} from "./workers/workers.component";
+import {WorkerAddComponent} from "./workers/worker-add/worker-add.component";
+import {WorkerEditComponent} from "./workers/worker-edit/worker-edit.component";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]},
   {path: 'clients/add', component: ClientAddComponent, canActivate: [AuthGuard]},
-  {path: 'clients/edit/:id', component: ClientEditComponent, canActivate: [AuthGuard]}
+  {path: 'clients/edit/:id', component: ClientEditComponent, canActivate: [AuthGuard]},
+  {path: 'workers', component: WorkersComponent, canActivate: [AuthGuard]},
+  {path: 'workers/add', component: WorkerAddComponent, canActivate: [AuthGuard]},
+  {path: 'workers/edit/:id', component: WorkerEditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

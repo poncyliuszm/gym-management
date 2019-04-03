@@ -1,9 +1,6 @@
 package pl.nowosielski.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -11,7 +8,7 @@ import java.time.LocalDate;
 public class Worker {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_Pracownik")
     private Integer id;
 
@@ -42,6 +39,10 @@ public class Worker {
     @Column(name = "Id_Specjalizacja")
     private Integer roleId;
 
+    @ManyToOne
+    @JoinColumn(name = "Id_Specjalizacja", insertable = false, updatable = false)
+    private Role role;
+
     public Worker() {
     }
 
@@ -56,6 +57,7 @@ public class Worker {
         this.phone = worker.phone;
         this.email = worker.email;
         this.roleId = worker.roleId;
+        this.role = worker.role;
     }
 
     public Integer getId() {
@@ -136,5 +138,13 @@ public class Worker {
 
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
