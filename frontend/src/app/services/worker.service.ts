@@ -14,7 +14,7 @@ export class WorkerService {
   }
 
   save(worker: any) {
-    return this.http.post(environment.appContext + '/worker/save', worker);
+    return this.http.post(environment.appContext + '/worker', worker);
   }
 
   getWorker(id: any) {

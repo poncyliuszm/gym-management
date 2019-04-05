@@ -1,5 +1,8 @@
 package pl.nowosielski.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -124,10 +127,12 @@ public class Worker {
         this.login = login;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }

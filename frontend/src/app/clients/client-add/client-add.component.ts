@@ -32,7 +32,6 @@ export class ClientAddComponent implements OnInit {
 
   addUser(form) {
     if (form.valid) {
-      // this.user['id'] = 2;
       this.clientService.save(this.user)
         .subscribe((data: any) => {
           this.router.navigate(['/clients']);

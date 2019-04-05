@@ -40,6 +40,7 @@ import {DeleteWorkerDialog, WorkersComponent} from './workers/workers.component'
 import {WorkerAddComponent} from './workers/worker-add/worker-add.component';
 import {WorkerEditComponent} from './workers/worker-edit/worker-edit.component';
 import {WorkerService} from "./services/worker.service";
+import {RoleService} from "./services/role.service";
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import {WorkerService} from "./services/worker.service";
     AuthGuard,
     InterceptService,
     LoaderService,
-    WorkerService,
+    WorkerService,,
+    RoleService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

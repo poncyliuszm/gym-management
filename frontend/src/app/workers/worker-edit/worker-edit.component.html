@@ -10,7 +10,7 @@
 
             </button>
           </div>
-          <label class="mat-h1 my-account-header">Edytuj klienta</label>
+          <label class="mat-h1 my-account-header">Edytuj pracownika</label>
         </div>
       </div>
     </div>
@@ -25,31 +25,47 @@
                 <div class="row space-between">
                   <div>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.name" id="name" matInput name="name" placeholder="Imię" required
+                      <input [(ngModel)]="worker.login" id="login" matInput name="login" placeholder="Login" required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.surname" id="surname" matInput name="surname" placeholder="Nazwisko"
+                      <input [(ngModel)]="worker.password" id="password" matInput name="password" placeholder="Hasło"
+                             type="password">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <mat-select required placeholder="Specjalizacja" name="role"
+                                  [(ngModel)]="worker.roleId">
+                        <mat-option *ngFor="let role of roles" [value]="role.id">
+                          {{role.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="worker.name" id="name" matInput name="name" placeholder="Imię" required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="worker.surname" id="surname" matInput name="surname" placeholder="Nazwisko"
                              required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.date" [matDatepicker]="myDatepicker" id="date" matInput name="date"
+                      <input [(ngModel)]="worker.date" [matDatepicker]="myDatepicker" id="date" matInput name="date"
                              placeholder="Data urodzenia" required>
                       <mat-datepicker-toggle [for]="myDatepicker" matSuffix></mat-datepicker-toggle>
                       <mat-datepicker #myDatepicker></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.address" id="address" matInput name="address" placeholder="Adres"
+                      <input [(ngModel)]="worker.address" id="address" matInput name="address" placeholder="Adres"
                              required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.phone" id="phone" matInput name="phone" placeholder="Nr tel." required
+                      <input [(ngModel)]="worker.phone" id="phone" matInput name="phone" placeholder="Nr tel." required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="client.email" id="email" matInput name="email" placeholder="E-mail" required
+                      <input [(ngModel)]="worker.email" id="email" matInput name="email" placeholder="E-mail" required
                              type="text">
                     </mat-form-field>
                   </div>
