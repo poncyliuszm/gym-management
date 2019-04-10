@@ -11,6 +11,7 @@ import {WorkerAddComponent} from "./workers/worker-add/worker-add.component";
 import {WorkerEditComponent} from "./workers/worker-edit/worker-edit.component";
 
 const routes: Routes = [
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]},

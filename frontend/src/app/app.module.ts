@@ -19,7 +19,7 @@ import {
   MatSidenavModule,
   MatSnackBarModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule, MatTooltipModule
 } from "@angular/material";
 import {HomeComponent} from './home/home.component';
 import {ClientService} from "./services/client.service";
@@ -41,6 +41,7 @@ import {WorkerAddComponent} from './workers/worker-add/worker-add.component';
 import {WorkerEditComponent} from './workers/worker-edit/worker-edit.component';
 import {WorkerService} from "./services/worker.service";
 import {RoleService} from "./services/role.service";
+import { TicketsDictionaryComponent } from './tickets-dictionary/tickets-dictionary.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {RoleService} from "./services/role.service";
     DeleteWorkerDialog,
     WorkersComponent,
     WorkerAddComponent,
-    WorkerEditComponent
+    WorkerEditComponent,
+    TicketsDictionaryComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -84,7 +86,8 @@ import {RoleService} from "./services/role.service";
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [
     ClientService,
