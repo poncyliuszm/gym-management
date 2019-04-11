@@ -1,26 +1,19 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav *ngIf="router.url !== '/login'" class="sidenav" fixedInViewport="true"
+  <mat-sidenav #sidenav *ngIf="router.url !== '/login'" class="sidenav" fixedInViewport="true"
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="!(isHandset$ | async)">
     <mat-toolbar style="background-color: #673ab7; color: white"></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/clients" [ngClass]="{'is-active': clickedItem === 'clients'}" (click)="clickedItem='clients'">
-        Klienci
-      </a>
-      <a mat-list-item routerLink="/workers" routerLinkActive="is-active">Pracownicy</a>
-      <a mat-list-item routerLink="/ticketsDictionary" routerLinkActive="is-active">Typy biletów</a>
+      <a mat-list-item  routerLink="/clients" routerLinkActive="is-active">Klienci</a>
+      <a mat-list-item  routerLink="/workers" routerLinkActive="is-active">Pracownicy</a>
+      <a mat-list-item  routerLink="/ticketsDictionary" routerLinkActive="is-active">Typy biletów</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar *ngIf="router.url !== '/login'" color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      <button mat-button (click)="toggleSidenav()" *ngIf="isHandset$ | async">
+        <mat-icon>menu</mat-icon>
       </button>
 
       <span>Header</span>
@@ -29,7 +22,6 @@
       <span>
         <button mat-flat-button color="primary" matTooltip="Wyloguj" (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
-          <!--<span>Wyloguj</span>-->
         </button>
       </span>
 

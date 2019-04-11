@@ -31,5 +31,5 @@ mat-toolbar a {
 }
 
 a.is-active {
-  background-color: green;
+  background-color: green !important;
 }
