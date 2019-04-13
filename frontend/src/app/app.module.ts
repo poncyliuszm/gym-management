@@ -41,7 +41,10 @@ import {WorkerAddComponent} from './workers/worker-add/worker-add.component';
 import {WorkerEditComponent} from './workers/worker-edit/worker-edit.component';
 import {WorkerService} from "./services/worker.service";
 import {RoleService} from "./services/role.service";
-import { TicketsDictionaryComponent } from './tickets-dictionary/tickets-dictionary.component';
+import {DeleteTicketTypeDialog, TicketTypesComponent} from './ticket-types/ticket-types.component';
+import {TicketTypeService} from "./services/ticket-type.service";
+import {TicketTypeAddComponent} from './ticket-types/ticket-type-add/ticket-type-add.component';
+import {TicketTypeEditComponent} from './ticket-types/ticket-type-edit/ticket-type-edit.component';
 
 
 @NgModule({
@@ -55,14 +58,18 @@ import { TicketsDictionaryComponent } from './tickets-dictionary/tickets-diction
     ClientEditComponent,
     DeleteClientDialog,
     DeleteWorkerDialog,
+    DeleteTicketTypeDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
-    TicketsDictionaryComponent
+    TicketTypesComponent,
+    TicketTypeAddComponent,
+    TicketTypeEditComponent
   ],
   entryComponents: [
     DeleteClientDialog,
-    DeleteWorkerDialog
+    DeleteWorkerDialog,
+    DeleteTicketTypeDialog
   ],
   imports: [
     BrowserModule,
@@ -95,8 +102,9 @@ import { TicketsDictionaryComponent } from './tickets-dictionary/tickets-diction
     AuthGuard,
     InterceptService,
     LoaderService,
-    WorkerService,,
+    WorkerService,
     RoleService,
+    TicketTypeService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],
