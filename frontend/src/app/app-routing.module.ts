@@ -12,6 +12,9 @@ import {WorkerEditComponent} from "./workers/worker-edit/worker-edit.component";
 import {TicketTypesComponent} from "./ticket-types/ticket-types.component";
 import {TicketTypeAddComponent} from "./ticket-types/ticket-type-add/ticket-type-add.component";
 import {TicketTypeEditComponent} from "./ticket-types/ticket-type-edit/ticket-type-edit.component";
+import {PaymentTypesComponent} from "./payment-types/payment-types.component";
+import {PaymentTypeAddComponent} from "./payment-types/payment-type-add/payment-type-add.component";
+import {PaymentTypeEditComponent} from "./payment-types/payment-type-edit/payment-type-edit.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -25,7 +28,10 @@ const routes: Routes = [
   {path: 'workers/edit/:id', component: WorkerEditComponent, canActivate: [AuthGuard]},
   {path: 'ticketTypes', component: TicketTypesComponent, canActivate: [AuthGuard]},
   {path: 'ticketTypes/add', component: TicketTypeAddComponent, canActivate: [AuthGuard]},
-  {path: 'ticketTypes/edit/:id', component: TicketTypeEditComponent, canActivate: [AuthGuard]}
+  {path: 'ticketTypes/edit/:id', component: TicketTypeEditComponent, canActivate: [AuthGuard]},
+  {path: 'paymentTypes', component: PaymentTypesComponent, canActivate: [AuthGuard]},
+  {path: 'paymentTypes/add', component: PaymentTypeAddComponent, canActivate: [AuthGuard]},
+  {path: 'paymentTypes/edit/:id', component: PaymentTypeEditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

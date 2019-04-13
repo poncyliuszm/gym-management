@@ -1,0 +1,52 @@
+<div class="row body" style="overflow: hidden;">
+
+  <div class="column" style="width: 100%">
+    <div class="row" style="background: #eee; padding: 0 50px; justify-content: space-between;min-height: 120px;">
+      <div class="flex-row">
+        <div class="container flex-row">
+          <div>
+            <button (click)="goBack()" color="white" mat-mini-fab style="margin-right: 40px">
+              <mat-icon>navigate_before</mat-icon>
+
+            </button>
+          </div>
+          <label class="mat-h1 my-account-header">Edytuj typ biletu</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="whiteboard" style="overflow: auto;">
+      <mat-card class="user-add-form main auto-margin" style="min-width: 400px;">
+
+        <mat-card-content>
+          <form #formBasic="ngForm" class="width-100">
+            <div style="padding: 15px">
+              <div style="margin-left: 15px">
+                <div class="row space-between">
+                  <div>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="ticketType.name" id="name" matInput name="name" placeholder="Nazwa" required
+                             type="text">
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="ticketType.price" id="price" matInput name="price" placeholder="Cena"
+                             required
+                             type="number">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="full-width form-btn-ground" style="margin-bottom: 10px">
+              <button (click)="save(formBasic)" color="primary" mat-raised-button
+                      style="border-radius: 20px; display: flex; margin: auto;"
+                      type="submit">Zapisz
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
