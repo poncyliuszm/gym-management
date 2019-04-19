@@ -1,25 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ClientService} from "../../services/client.service";
 import {MatSnackBar} from "@angular/material";
-import {TicketTypeService} from "../../services/ticket-type.service";
+import {PaymentTypeService} from "../../services/payment-type.service";
 
 @Component({
-  selector: 'app-ticket-type-edit',
+  selector: 'app-payment-type-edit',
   templateUrl: './payment-type-edit.component.html',
   styleUrls: ['./payment-type-edit.component.css']
 })
 export class PaymentTypeEditComponent implements OnInit {
 
-  ticketType = {
+  paymentType = {
     name: "",
-    price: ""
+    paidPercent: ""
   };
-  ticketTypeId;
+  paymentTypeId;
 
 
   constructor(private router: Router,
-              private ticketTypeService: TicketTypeService,
+              private paymentTypeService: PaymentTypeService,
               private activatedRoute: ActivatedRoute,
               private matSnackBar: MatSnackBar) {
 
@@ -27,25 +26,25 @@ export class PaymentTypeEditComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.ticketTypeId = +params['id'];
-      this.ticketTypeService.getTicketType(this.ticketTypeId)
-        .subscribe((ticketType: any) => {
-          this.ticketType = ticketType;
+      this.paymentTypeId = +params['id'];
+      this.paymentTypeService.getPaymentType(this.paymentTypeId)
+        .subscribe((paymentType: any) => {
+          this.paymentType = paymentType;
         })
     });
 
   }
 
   goBack() {
-    this.router.navigate(['/ticketTypes']);
+    this.router.navigate(['/paymentTypes']);
   }
 
   save(form) {
     if (form.valid) {
-      this.ticketTypeService.update(this.ticketType)
+      this.paymentTypeService.update(this.paymentType)
         .subscribe((data: any) => {
-          this.router.navigate(['/ticketTypes']);
-          this.matSnackBar.open("Pomyślnie zaktualizowano typ biletu", "Zamknij", {
+          this.router.navigate(['/paymentTypes']);
+          this.matSnackBar.open("Pomyślnie zaktualizowano typ opłat", "Zamknij", {
             duration: 4000
           });
         });

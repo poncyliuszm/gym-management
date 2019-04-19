@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {ClientService} from "../../services/client.service";
 import {MatSnackBar} from "@angular/material";
-import {TicketTypeService} from "../../services/ticket-type.service";
+import {PaymentTypeService} from "../../services/payment-type.service";
 
 @Component({
   selector: 'app-ticket-type-add',
@@ -11,14 +10,14 @@ import {TicketTypeService} from "../../services/ticket-type.service";
 })
 export class PaymentTypeAddComponent implements OnInit {
 
-  ticketType = {
+  paymentType = {
     name: "",
-    price: ""
+    paidPercent: ""
   };
 
 
   constructor(private router: Router,
-              private ticketTypeService: TicketTypeService,
+              private paymentTypeService: PaymentTypeService,
               private matSnackBar: MatSnackBar) {
 
   }
@@ -27,15 +26,15 @@ export class PaymentTypeAddComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/ticketTypes']);
+    this.router.navigate(['/paymentTypes']);
   }
 
-  addTicketType(form) {
+  addPaymentType(form) {
     if (form.valid) {
-      this.ticketTypeService.save(this.ticketType)
+      this.paymentTypeService.save(this.paymentType)
         .subscribe((data: any) => {
-          this.router.navigate(['/ticketTypes']);
-          this.matSnackBar.open("Pomyślnie dodano typ biletu", "Zamknij", {
+          this.router.navigate(['/paymentTypes']);
+          this.matSnackBar.open("Pomyślnie dodano typ opłat", "Zamknij", {
             duration: 4000
           });
         });

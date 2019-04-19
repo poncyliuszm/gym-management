@@ -10,7 +10,7 @@
 
             </button>
           </div>
-          <label class="mat-h1 my-account-header">Edytuj typ biletu</label>
+          <label class="mat-h1 my-account-header">Edytuj typ opłat</label>
         </div>
       </div>
     </div>
@@ -25,11 +25,12 @@
                 <div class="row space-between">
                   <div>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="ticketType.name" id="name" matInput name="name" placeholder="Nazwa" required
+                      <input [(ngModel)]="paymentType.name" id="name" matInput name="name" placeholder="Nazwa" required
                              type="text">
                     </mat-form-field>
                     <mat-form-field class="width-100">
-                      <input [(ngModel)]="ticketType.price" id="price" matInput name="price" placeholder="Cena"
+                      <input [(ngModel)]="paymentType.paidPercent" id="paidPercent" matInput name="paidPercent"
+                             placeholder="Wartość opłacona"
                              required
                              type="number">
                     </mat-form-field>

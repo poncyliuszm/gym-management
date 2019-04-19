@@ -49,6 +49,10 @@ import {DeletePaymentTypeDialog, PaymentTypesComponent} from "./payment-types/pa
 import {PaymentTypeAddComponent} from "./payment-types/payment-type-add/payment-type-add.component";
 import {PaymentTypeEditComponent} from "./payment-types/payment-type-edit/payment-type-edit.component";
 import {PaymentTypeService} from "./services/payment-type.service";
+import {DeleteTicketDialog, TicketsComponent} from './tickets/tickets.component';
+import {TicketService} from "./services/ticket.service";
+import {TicketEditComponent} from './tickets/ticket-edit/ticket-edit.component';
+import {TicketAddComponent} from './tickets/ticket-add/ticket-add.component';
 
 
 @NgModule({
@@ -64,6 +68,7 @@ import {PaymentTypeService} from "./services/payment-type.service";
     DeleteWorkerDialog,
     DeleteTicketTypeDialog,
     DeletePaymentTypeDialog,
+    DeleteTicketDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -72,13 +77,17 @@ import {PaymentTypeService} from "./services/payment-type.service";
     TicketTypeEditComponent,
     PaymentTypesComponent,
     PaymentTypeAddComponent,
-    PaymentTypeEditComponent
+    PaymentTypeEditComponent,
+    TicketsComponent,
+    TicketEditComponent,
+    TicketAddComponent
   ],
   entryComponents: [
     DeleteClientDialog,
     DeleteWorkerDialog,
     DeleteTicketTypeDialog,
-    DeletePaymentTypeDialog
+    DeletePaymentTypeDialog,
+    DeleteTicketDialog
   ],
   imports: [
     BrowserModule,
@@ -115,6 +124,7 @@ import {PaymentTypeService} from "./services/payment-type.service";
     RoleService,
     TicketTypeService,
     PaymentTypeService,
+    TicketService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],
