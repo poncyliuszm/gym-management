@@ -3,86 +3,86 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSourc
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {MeasurementTypeService} from "../services/maesurement-type.service";
+import {ExerciseTypeService} from "../services/exercise-type.service";
 
 @Component({
-  selector: 'app-measurement-types',
-  templateUrl: './measurement-types.component.html',
-  styleUrls: ['./measurement-types.component.css']
+  selector: 'app-exercise-types',
+  templateUrl: './exercise-types.component.html',
+  styleUrls: ['./exercise-types.component.css']
 })
-export class MeasurementTypesComponent implements OnInit {
+export class ExerciseTypesComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'position', 'name', 'description'];
-  measurementTypesDataSource = new MatTableDataSource();
+  exerciseTypesDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
   constructor(private http: HttpClient,
-              private measurementTypeService: MeasurementTypeService,
+              private exerciseTypeService: ExerciseTypeService,
               private router: Router,
               private matSnackBar: MatSnackBar,
               private matDialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getMeasurementTypes();
+    this.getExerciseTypes();
   }
 
   checkboxLabel(row?: any): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  addMeasurementType() {
-    this.router.navigate(['measurementTypes/add'])
+  addExerciseType() {
+    this.router.navigate(['exerciseTypes/add'])
   }
 
-  editMeasurementType() {
-    this.router.navigate(['measurementTypes/edit', this.selection.selected[0].id]);
+  editExerciseType() {
+    this.router.navigate(['exerciseTypes/edit', this.selection.selected[0].id]);
 
   }
 
   openDeleteDialog() {
-    let dialogRef = this.matDialog.open(DeleteMeasurementTypeDialog, {});
+    let dialogRef = this.matDialog.open(DeleteExerciseTypeDialog, {});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true)
-        this.deleteMeasurementType();
+        this.deleteExerciseType();
       else
         return;
     });
   }
 
-  deleteMeasurementType() {
-    this.measurementTypeService.delete(this.selection.selected[0].id)
+  deleteExerciseType() {
+    this.exerciseTypeService.delete(this.selection.selected[0].id)
       .subscribe((data => {
-        this.getMeasurementTypes();
-        this.matSnackBar.open("Pomyslnie usunięto typ pomiaru", "Zamknij", {
+        this.getExerciseTypes();
+        this.matSnackBar.open("Pomyslnie usunięto typ ćwiczenia", "Zamknij", {
           duration: 3000
         })
       }))
   }
 
-  private getMeasurementTypes() {
-    this.measurementTypeService.list()
+  private getExerciseTypes() {
+    this.exerciseTypeService.list()
       .subscribe((data: any) => {
         let counter = 1;
         data.forEach(c => c['position'] = counter++);
-        this.measurementTypesDataSource = new MatTableDataSource(data);
+        this.exerciseTypesDataSource = new MatTableDataSource(data);
       })
   }
 }
 
 @Component({
   selector: 'delete-dialog',
-  template: "<h3 mat-dialog-title style='text-align: center'>Usunięcie typu pomiaru</h3>\n" +
-    "<mat-dialog-content >  Czy na pewno chcesz usunąć ten typ pomiaru?</mat-dialog-content>\n" +
+  template: "<h3 mat-dialog-title style='text-align: center'>Usunięcie typu ćwiczenia</h3>\n" +
+    "<mat-dialog-content >  Czy na pewno chcesz usunąć ten typ ćwiczenia?</mat-dialog-content>\n" +
     "<mat-dialog-actions style='justify-content: center'>\n" +
     "  <button mat-button [mat-dialog-close]=\"true\" tabindex=\"1\">Tak</button>\n" +
     "  <button mat-button [mat-dialog-close]=\"false\" tabindex=\"-1\">Anuluj</button>\n" +
     "</mat-dialog-actions>"
 })
-export class DeleteMeasurementTypeDialog {
+export class DeleteExerciseTypeDialog {
 
-  constructor(public dialogRef: MatDialogRef<DeleteMeasurementTypeDialog>,
+  constructor(public dialogRef: MatDialogRef<DeleteExerciseTypeDialog>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 

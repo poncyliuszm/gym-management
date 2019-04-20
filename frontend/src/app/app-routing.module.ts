@@ -21,6 +21,9 @@ import {TicketEditComponent} from "./tickets/ticket-edit/ticket-edit.component";
 import {MeasurementTypesComponent} from "./measurement-types/measurement-types.component";
 import {MeasurementTypeAddComponent} from "./measurement-types/measurement-type-add/measurement-type-add.component";
 import {MeasurementTypeEditComponent} from "./measurement-types/measurement-type-edit/measurement-type-edit.component";
+import {ExerciseTypesComponent} from "./exercise-types/exercise-types.component";
+import {ExerciseTypeAddComponent} from "./exercise-types/exercise-type-add/exercise-type-add.component";
+import {ExerciseTypeEditComponent} from "./exercise-types/exercise-type-edit/exercise-type-edit.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -43,7 +46,10 @@ const routes: Routes = [
   {path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthGuard]},
   {path: 'measurementTypes', component: MeasurementTypesComponent, canActivate: [AuthGuard]},
   {path: 'measurementTypes/add', component: MeasurementTypeAddComponent, canActivate: [AuthGuard]},
-  {path: 'measurementTypes/edit/:id', component: MeasurementTypeEditComponent, canActivate: [AuthGuard]}
+  {path: 'measurementTypes/edit/:id', component: MeasurementTypeEditComponent, canActivate: [AuthGuard]},
+  {path: 'exerciseTypes', component: ExerciseTypesComponent, canActivate: [AuthGuard]},
+  {path: 'exerciseTypes/add', component: ExerciseTypeAddComponent, canActivate: [AuthGuard]},
+  {path: 'exerciseTypes/edit/:id', component: ExerciseTypeEditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

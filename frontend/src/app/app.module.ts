@@ -57,6 +57,10 @@ import {DeleteMeasurementTypeDialog, MeasurementTypesComponent} from "./measurem
 import {MeasurementTypeAddComponent} from "./measurement-types/measurement-type-add/measurement-type-add.component";
 import {MeasurementTypeEditComponent} from "./measurement-types/measurement-type-edit/measurement-type-edit.component";
 import {MeasurementTypeService} from "./services/maesurement-type.service";
+import {DeleteExerciseTypeDialog, ExerciseTypesComponent} from "./exercise-types/exercise-types.component";
+import {ExerciseTypeEditComponent} from "./exercise-types/exercise-type-edit/exercise-type-edit.component";
+import {ExerciseTypeAddComponent} from "./exercise-types/exercise-type-add/exercise-type-add.component";
+import {ExerciseTypeService} from "./services/exercise-type.service";
 
 
 @NgModule({
@@ -74,6 +78,7 @@ import {MeasurementTypeService} from "./services/maesurement-type.service";
     DeletePaymentTypeDialog,
     DeleteTicketDialog,
     DeleteMeasurementTypeDialog,
+    DeleteExerciseTypeDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -84,11 +89,14 @@ import {MeasurementTypeService} from "./services/maesurement-type.service";
     PaymentTypeAddComponent,
     PaymentTypeEditComponent,
     TicketsComponent,
-    TicketEditComponent,
     TicketAddComponent,
+    TicketEditComponent,
     MeasurementTypesComponent,
+    MeasurementTypeAddComponent,
     MeasurementTypeEditComponent,
-    MeasurementTypeAddComponent
+    ExerciseTypesComponent,
+    ExerciseTypeAddComponent,
+    ExerciseTypeEditComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -96,7 +104,8 @@ import {MeasurementTypeService} from "./services/maesurement-type.service";
     DeleteTicketTypeDialog,
     DeletePaymentTypeDialog,
     DeleteTicketDialog,
-    DeleteMeasurementTypeDialog
+    DeleteMeasurementTypeDialog,
+    DeleteExerciseTypeDialog
   ],
   imports: [
     BrowserModule,
@@ -135,6 +144,7 @@ import {MeasurementTypeService} from "./services/maesurement-type.service";
     PaymentTypeService,
     TicketService,
     MeasurementTypeService,
+    ExerciseTypeService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],
