@@ -53,6 +53,10 @@ import {DeleteTicketDialog, TicketsComponent} from './tickets/tickets.component'
 import {TicketService} from "./services/ticket.service";
 import {TicketEditComponent} from './tickets/ticket-edit/ticket-edit.component';
 import {TicketAddComponent} from './tickets/ticket-add/ticket-add.component';
+import {DeleteMeasurementTypeDialog, MeasurementTypesComponent} from "./measurement-types/measurement-types.component";
+import {MeasurementTypeAddComponent} from "./measurement-types/measurement-type-add/measurement-type-add.component";
+import {MeasurementTypeEditComponent} from "./measurement-types/measurement-type-edit/measurement-type-edit.component";
+import {MeasurementTypeService} from "./services/maesurement-type.service";
 
 
 @NgModule({
@@ -69,6 +73,7 @@ import {TicketAddComponent} from './tickets/ticket-add/ticket-add.component';
     DeleteTicketTypeDialog,
     DeletePaymentTypeDialog,
     DeleteTicketDialog,
+    DeleteMeasurementTypeDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -80,14 +85,18 @@ import {TicketAddComponent} from './tickets/ticket-add/ticket-add.component';
     PaymentTypeEditComponent,
     TicketsComponent,
     TicketEditComponent,
-    TicketAddComponent
+    TicketAddComponent,
+    MeasurementTypesComponent,
+    MeasurementTypeEditComponent,
+    MeasurementTypeAddComponent
   ],
   entryComponents: [
     DeleteClientDialog,
     DeleteWorkerDialog,
     DeleteTicketTypeDialog,
     DeletePaymentTypeDialog,
-    DeleteTicketDialog
+    DeleteTicketDialog,
+    DeleteMeasurementTypeDialog
   ],
   imports: [
     BrowserModule,
@@ -125,6 +134,7 @@ import {TicketAddComponent} from './tickets/ticket-add/ticket-add.component';
     TicketTypeService,
     PaymentTypeService,
     TicketService,
+    MeasurementTypeService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

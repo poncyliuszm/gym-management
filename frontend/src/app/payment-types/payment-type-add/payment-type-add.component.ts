@@ -4,7 +4,7 @@ import {MatSnackBar} from "@angular/material";
 import {PaymentTypeService} from "../../services/payment-type.service";
 
 @Component({
-  selector: 'app-ticket-type-add',
+  selector: 'app-payment-type-add',
   templateUrl: './payment-type-add.component.html',
   styleUrls: ['./payment-type-add.component.css']
 })
