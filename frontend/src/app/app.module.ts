@@ -61,6 +61,10 @@ import {DeleteExerciseTypeDialog, ExerciseTypesComponent} from "./exercise-types
 import {ExerciseTypeEditComponent} from "./exercise-types/exercise-type-edit/exercise-type-edit.component";
 import {ExerciseTypeAddComponent} from "./exercise-types/exercise-type-add/exercise-type-add.component";
 import {ExerciseTypeService} from "./services/exercise-type.service";
+import {DeleteTrainerInterviewDialog, TrainerInterviewComponent} from "./trainer-interview/trainer-interview.component";
+import {TrainerInterviewsService} from "./services/trainer-interviews.service";
+import {TrainerInterviewAddComponent} from "./trainer-interview/trainer-interview-add/trainer-interview-add.component";
+import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-interview-edit/trainer-interview-edit.component";
 
 
 @NgModule({
@@ -79,6 +83,7 @@ import {ExerciseTypeService} from "./services/exercise-type.service";
     DeleteTicketDialog,
     DeleteMeasurementTypeDialog,
     DeleteExerciseTypeDialog,
+    DeleteTrainerInterviewDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -96,7 +101,10 @@ import {ExerciseTypeService} from "./services/exercise-type.service";
     MeasurementTypeEditComponent,
     ExerciseTypesComponent,
     ExerciseTypeAddComponent,
-    ExerciseTypeEditComponent
+    ExerciseTypeEditComponent,
+    TrainerInterviewComponent,
+    TrainerInterviewAddComponent,
+    TrainerInterviewEditComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -105,7 +113,8 @@ import {ExerciseTypeService} from "./services/exercise-type.service";
     DeletePaymentTypeDialog,
     DeleteTicketDialog,
     DeleteMeasurementTypeDialog,
-    DeleteExerciseTypeDialog
+    DeleteExerciseTypeDialog,
+    DeleteTrainerInterviewDialog
   ],
   imports: [
     BrowserModule,
@@ -145,6 +154,7 @@ import {ExerciseTypeService} from "./services/exercise-type.service";
     TicketService,
     MeasurementTypeService,
     ExerciseTypeService,
+    TrainerInterviewsService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],
