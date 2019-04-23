@@ -19,7 +19,8 @@ import {
   MatSidenavModule,
   MatSnackBarModule,
   MatTableModule,
-  MatToolbarModule, MatTooltipModule
+  MatToolbarModule,
+  MatTooltipModule
 } from "@angular/material";
 import {HomeComponent} from './home/home.component';
 import {ClientService} from "./services/client.service";
@@ -62,13 +63,17 @@ import {ExerciseTypeEditComponent} from "./exercise-types/exercise-type-edit/exe
 import {ExerciseTypeAddComponent} from "./exercise-types/exercise-type-add/exercise-type-add.component";
 import {ExerciseTypeService} from "./services/exercise-type.service";
 import {DeleteTrainerInterviewDialog, TrainerInterviewComponent} from "./trainer-interview/trainer-interview.component";
-import {TrainerInterviewsService} from "./services/trainer-interviews.service";
+import {TrainerInterviewService} from "./services/trainer-interview.service";
 import {TrainerInterviewAddComponent} from "./trainer-interview/trainer-interview-add/trainer-interview-add.component";
 import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-interview-edit/trainer-interview-edit.component";
 import {DeleteExerciseDialog, ExercisesComponent} from "./exercises/exercises.component";
 import {ExerciseAddComponent} from "./exercises/exercise-add/exercise-add.component";
 import {ExerciseEditComponent} from "./exercises/exercise-edit/exercise-edit.component";
 import {ExerciseService} from "./services/exercise.service";
+import {DeleteMeasurementDialog, MeasurementsComponent} from "./measurements/measurements.component";
+import {MeasurementEditComponent} from "./measurements/measurement-edit/measurement-edit.component";
+import {MeasurementAddComponent} from "./measurements/measurement-add/measurement-add.component";
+import {MeasurementService} from "./services/measurement.service";
 
 
 @NgModule({
@@ -89,6 +94,7 @@ import {ExerciseService} from "./services/exercise.service";
     DeleteExerciseTypeDialog,
     DeleteTrainerInterviewDialog,
     DeleteExerciseDialog,
+    DeleteMeasurementDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -112,7 +118,10 @@ import {ExerciseService} from "./services/exercise.service";
     TrainerInterviewEditComponent,
     ExercisesComponent,
     ExerciseAddComponent,
-    ExerciseEditComponent
+    ExerciseEditComponent,
+    MeasurementsComponent,
+    MeasurementAddComponent,
+    MeasurementEditComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -123,7 +132,8 @@ import {ExerciseService} from "./services/exercise.service";
     DeleteMeasurementTypeDialog,
     DeleteExerciseTypeDialog,
     DeleteTrainerInterviewDialog,
-    DeleteExerciseDialog
+    DeleteExerciseDialog,
+    DeleteMeasurementDialog
   ],
   imports: [
     BrowserModule,
@@ -163,8 +173,9 @@ import {ExerciseService} from "./services/exercise.service";
     TicketService,
     MeasurementTypeService,
     ExerciseTypeService,
-    TrainerInterviewsService,
+    TrainerInterviewService,
     ExerciseService,
+    MeasurementService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

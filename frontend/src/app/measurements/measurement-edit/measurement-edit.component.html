@@ -1,0 +1,78 @@
+<div class="row body" style="overflow: hidden;">
+
+  <div class="column" style="width: 100%">
+    <div class="row" style="background: #eee; padding: 0 50px; justify-content: space-between;min-height: 120px;">
+      <div class="flex-row">
+        <div class="container flex-row">
+          <div>
+            <button (click)="goBack()" color="white" mat-mini-fab style="margin-right: 40px">
+              <mat-icon>navigate_before</mat-icon>
+
+            </button>
+          </div>
+          <label class="mat-h1 my-account-header">Edytuj pomiar</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="whiteboard" style="overflow: auto;">
+      <mat-card class="user-add-form main auto-margin" style="min-width: 400px;">
+
+        <mat-card-content>
+          <form #formBasic="ngForm" class="width-100">
+            <div style="padding: 15px">
+              <div style="margin-left: 15px">
+                <div class="row space-between">
+                  <div>
+                    <mat-form-field class="width-100">
+                      <mat-select [(ngModel)]="measurement.measurementTypeId" name="measurementTypeId"
+                                  placeholder="Typ pomiaru"
+                                  required>
+                        <mat-option *ngFor="let measurementType of measurementTypes" [value]="measurementType.id">
+                          {{measurementType.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="width-100">
+                      <mat-select [(ngModel)]="measurement.ticketId" name="ticket" placeholder="Klient"
+                                  required>
+                        <mat-option *ngFor="let ticket of tickets" [value]="ticket.id">
+                          {{ticket.client?.name}} {{ticket.client?.surname}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="measurement.dateFrom" [matDatepicker]="myDatepickerFrom" id="dateFrom"
+                             matInput
+                             name="dateFrom"
+                             placeholder="Data wprowadzenia" required>
+                      <mat-datepicker-toggle [for]="myDatepickerFrom" matSuffix></mat-datepicker-toggle>
+                      <mat-datepicker #myDatepickerFrom></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field class="width-100">
+                      <input [(ngModel)]="measurement.measurement" id="measurement" matInput name="measurement"
+                             placeholder="Pomiar [cm/kg]" required
+                             type="number">
+                    </mat-form-field>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="full-width form-btn-ground" style="margin-bottom: 10px">
+              <button (click)="save(formBasic)" color="primary" mat-raised-button
+                      style="border-radius: 20px; display: flex; margin: auto;"
+                      type="submit">Zapisz
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

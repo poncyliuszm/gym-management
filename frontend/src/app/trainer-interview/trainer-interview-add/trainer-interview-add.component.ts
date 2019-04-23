@@ -3,10 +3,10 @@ import {Router} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
 import {WorkerService} from "../../services/worker.service";
 import {MatSnackBar} from "@angular/material";
-import {TrainerInterviewsService} from "../../services/trainer-interviews.service";
+import {TrainerInterviewService} from "../../services/trainer-interview.service";
 
 @Component({
-  selector: 'app-ticket-add',
+  selector: 'app-trainer-interview-add',
   templateUrl: './trainer-interview-add.component.html',
   styleUrls: ['./trainer-interview-add.component.css']
 })
@@ -22,7 +22,7 @@ export class TrainerInterviewAddComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private trainerInterviewService: TrainerInterviewsService,
+              private trainerInterviewService: TrainerInterviewService,
               private workerService: WorkerService,
               private ticketService: TicketService,
               private matSnackBar: MatSnackBar) {

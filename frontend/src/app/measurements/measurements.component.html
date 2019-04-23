@@ -1,0 +1,57 @@
+<button (click)="addMeasurement()" class="createUpdate" mat-raised-button style="margin-left: 40px !important;">
+  Dodaj pomiar
+</button>
+<button style="margin-left: 5px;" mat-raised-button class="createUpdate" (click)="editMeasurement()">
+  Edytuj pomiar
+</button>
+<button style="margin-left: 5px;" mat-raised-button class="createUpdate" (click)="openDeleteDialog()">
+  Usuń pomiar
+</button>
+
+<div class="evidence">
+
+  <table style="width: 90%" mat-table [dataSource]="measurementsDataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Nr.</th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="measurementType">
+      <th mat-header-cell *matHeaderCellDef> Typ pomiaru</th>
+      <td mat-cell *matCellDef="let element"> {{element.measurementType?.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ticket">
+      <th mat-header-cell *matHeaderCellDef>Klient</th>
+      <td mat-cell *matCellDef="let element"> {{element.ticket?.client?.name}} {{element.ticket?.client?.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateFrom">
+      <th mat-header-cell *matHeaderCellDef>Data wprowadzenia</th>
+      <td mat-cell *matCellDef="let element"> {{element.dateFrom}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="measurement">
+      <th mat-header-cell *matHeaderCellDef>Pomiar [cm/kg]</th>
+      <td mat-cell *matCellDef="let element"> {{element.measurement}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
+

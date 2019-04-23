@@ -3,87 +3,87 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSourc
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {TrainerInterviewService} from "../services/trainer-interview.service";
+import {MeasurementService} from "../services/measurement.service";
 
 @Component({
-  selector: 'app-trainer-interviews',
-  templateUrl: './trainer-interview.component.html',
-  styleUrls: ['./trainer-interview.component.css']
+  selector: 'app-measurements',
+  templateUrl: './measurements.component.html',
+  styleUrls: ['./measurements.component.css']
 })
-export class TrainerInterviewComponent implements OnInit {
+export class MeasurementsComponent implements OnInit {
 
   displayedColumns: string[] =
-    ['select', 'position', 'worker', 'ticket', 'dateFrom', 'description'];
-  trainerInterviewDataSource = new MatTableDataSource();
+    ['select', 'position', 'measurementType', 'ticket', 'dateFrom', 'measurement'];
+  measurementsDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
   constructor(private http: HttpClient,
-              private trainerInterviewsService: TrainerInterviewService,
+              private measurementService: MeasurementService,
               private router: Router,
               private matSnackBar: MatSnackBar,
               private matDialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getTrainerInterviews();
+    this.getMeasurements();
   }
 
   checkboxLabel(row?: any): string {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  addTrainerInterview() {
-    this.router.navigate(['trainerInterviews/add'])
+  addMeasurement() {
+    this.router.navigate(['measurements/add'])
   }
 
-  editTrainerInterview() {
-    this.router.navigate(['trainerInterviews/edit', this.selection.selected[0].id]);
+  editMeasurement() {
+    this.router.navigate(['measurements/edit', this.selection.selected[0].id]);
 
   }
 
   openDeleteDialog() {
-    let dialogRef = this.matDialog.open(DeleteTrainerInterviewDialog, {});
+    let dialogRef = this.matDialog.open(DeleteMeasurementDialog, {});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true)
-        this.deleteTicket();
+        this.deleteMeasurement();
       else
         return;
     });
   }
 
-  deleteTicket() {
-    this.trainerInterviewsService.delete(this.selection.selected[0].id)
+  deleteMeasurement() {
+    this.measurementService.delete(this.selection.selected[0].id)
       .subscribe((data => {
-        this.getTrainerInterviews();
-        this.matSnackBar.open("Pomyslnie usunięto wywiad trenera", "Zamknij", {
+        this.getMeasurements();
+        this.matSnackBar.open("Pomyslnie usunięto pomiar", "Zamknij", {
           duration: 3000
         })
       }))
   }
 
-  private getTrainerInterviews() {
-    this.trainerInterviewsService.list()
+  private getMeasurements() {
+    this.measurementService.list()
       .subscribe((data: any) => {
         let counter = 1;
         data.forEach(c => c['position'] = counter++);
-        this.trainerInterviewDataSource = new MatTableDataSource(data);
+        this.measurementsDataSource = new MatTableDataSource(data);
       })
   }
 }
 
 @Component({
   selector: 'delete-dialog',
-  template: "<h3 mat-dialog-title style='text-align: center'>Usunięcie wywiadu</h3>\n" +
-    "<mat-dialog-content >  Czy na pewno chcesz usunąć ten wywiad?</mat-dialog-content>\n" +
+  template: "<h3 mat-dialog-title style='text-align: center'>Usunięcie pomiaru</h3>\n" +
+    "<mat-dialog-content >  Czy na pewno chcesz usunąć ten pomiar?</mat-dialog-content>\n" +
     "<mat-dialog-actions style='justify-content: center'>\n" +
     "  <button mat-button [mat-dialog-close]=\"true\" tabindex=\"1\">Tak</button>\n" +
     "  <button mat-button [mat-dialog-close]=\"false\" tabindex=\"-1\">Anuluj</button>\n" +
     "</mat-dialog-actions>"
 })
-export class DeleteTrainerInterviewDialog {
+export class DeleteMeasurementDialog {
 
-  constructor(public dialogRef: MatDialogRef<DeleteTrainerInterviewDialog>,
+  constructor(public dialogRef: MatDialogRef<DeleteMeasurementDialog>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
