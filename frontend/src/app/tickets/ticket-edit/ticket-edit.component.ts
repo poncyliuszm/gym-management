@@ -14,13 +14,9 @@ import {WorkerService} from "../../services/worker.service";
 })
 export class TicketEditComponent implements OnInit {
   ticket = {
-    client: "",
     clientId: "",
-    paymentType: "",
     paymentTypeId: "",
-    ticketType: "",
     ticketTypeId: "",
-    worker: "",
     workerId: "",
     dateFrom: "",
     timeFrom: "",

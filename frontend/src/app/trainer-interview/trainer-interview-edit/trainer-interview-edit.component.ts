@@ -12,9 +12,7 @@ import {TrainerInterviewsService} from "../../services/trainer-interviews.servic
 })
 export class TrainerInterviewEditComponent implements OnInit {
   trainerInterview = {
-    worker: "",
     workerId: "",
-    ticket: "",
     ticketId: "",
     dateFrom: "",
     description: ""

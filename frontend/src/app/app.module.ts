@@ -65,6 +65,10 @@ import {DeleteTrainerInterviewDialog, TrainerInterviewComponent} from "./trainer
 import {TrainerInterviewsService} from "./services/trainer-interviews.service";
 import {TrainerInterviewAddComponent} from "./trainer-interview/trainer-interview-add/trainer-interview-add.component";
 import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-interview-edit/trainer-interview-edit.component";
+import {DeleteExerciseDialog, ExercisesComponent} from "./exercises/exercises.component";
+import {ExerciseAddComponent} from "./exercises/exercise-add/exercise-add.component";
+import {ExerciseEditComponent} from "./exercises/exercise-edit/exercise-edit.component";
+import {ExerciseService} from "./services/exercise.service";
 
 
 @NgModule({
@@ -84,6 +88,7 @@ import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-intervi
     DeleteMeasurementTypeDialog,
     DeleteExerciseTypeDialog,
     DeleteTrainerInterviewDialog,
+    DeleteExerciseDialog,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -104,7 +109,10 @@ import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-intervi
     ExerciseTypeEditComponent,
     TrainerInterviewComponent,
     TrainerInterviewAddComponent,
-    TrainerInterviewEditComponent
+    TrainerInterviewEditComponent,
+    ExercisesComponent,
+    ExerciseAddComponent,
+    ExerciseEditComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -114,7 +122,8 @@ import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-intervi
     DeleteTicketDialog,
     DeleteMeasurementTypeDialog,
     DeleteExerciseTypeDialog,
-    DeleteTrainerInterviewDialog
+    DeleteTrainerInterviewDialog,
+    DeleteExerciseDialog
   ],
   imports: [
     BrowserModule,
@@ -155,6 +164,7 @@ import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-intervi
     MeasurementTypeService,
     ExerciseTypeService,
     TrainerInterviewsService,
+    ExerciseService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

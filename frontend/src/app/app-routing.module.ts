@@ -27,6 +27,9 @@ import {ExerciseTypeEditComponent} from "./exercise-types/exercise-type-edit/exe
 import {TrainerInterviewComponent} from "./trainer-interview/trainer-interview.component";
 import {TrainerInterviewEditComponent} from "./trainer-interview/trainer-interview-edit/trainer-interview-edit.component";
 import {TrainerInterviewAddComponent} from "./trainer-interview/trainer-interview-add/trainer-interview-add.component";
+import {ExercisesComponent} from "./exercises/exercises.component";
+import {ExerciseAddComponent} from "./exercises/exercise-add/exercise-add.component";
+import {ExerciseEditComponent} from "./exercises/exercise-edit/exercise-edit.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -55,7 +58,10 @@ const routes: Routes = [
   {path: 'exerciseTypes/edit/:id', component: ExerciseTypeEditComponent, canActivate: [AuthGuard]},
   {path: 'trainerInterviews', component: TrainerInterviewComponent, canActivate: [AuthGuard]},
   {path: 'trainerInterviews/add', component: TrainerInterviewAddComponent, canActivate: [AuthGuard]},
-  {path: 'trainerInterviews/edit/:id', component: TrainerInterviewEditComponent, canActivate: [AuthGuard]}
+  {path: 'trainerInterviews/edit/:id', component: TrainerInterviewEditComponent, canActivate: [AuthGuard]},
+  {path: 'exercises', component: ExercisesComponent, canActivate: [AuthGuard]},
+  {path: 'exercises/add', component: ExerciseAddComponent, canActivate: [AuthGuard]},
+  {path: 'exercises/edit/:id', component: ExerciseEditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
