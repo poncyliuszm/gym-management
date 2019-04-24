@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,10 +10,10 @@ import {AuthService} from "../services/auth.service";
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.css']
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit {
   @ViewChild('sidenav') sidenav:any;
+  currentUser;
 
-  clickedItem;
   toggleSidenav()
   {
     this.sidenav.toggle();
@@ -30,6 +30,10 @@ export class MainNavComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  ngOnInit() {
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
   }
 
 

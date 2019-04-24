@@ -18,14 +18,15 @@ export class AuthService {
     let headers = new HttpHeaders()
       .set('Authorization', 'Basic ' + btoa(loginData.username + ":" + loginData.password))
 
-    // this.http.get( environment.appContext + '/login', {headers: headers})
-    //   .pipe(map(user => console.log("user")));
-
     return this.http.get(environment.appContext + '/login', {headers: headers});
   }
 
   logout() {
     sessionStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+
+  getCurrentUser() {
+    return this.http.get(environment.appContext + '/worker/currentWorker');
   }
 }

@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.model)
       .subscribe((user: any) => {
         if (user) {
-          sessionStorage.setItem('currentUser', JSON.stringify(user));
           sessionStorage.setItem('token', btoa(this.model.username + ":" + this.model.password));
+
+          this.authService.getCurrentUser()
+            .subscribe((data: any) => {
+              sessionStorage.setItem('currentUser', JSON.stringify(data));
+            });
+
           this.router.navigate(['/home']);
           return user;
         }

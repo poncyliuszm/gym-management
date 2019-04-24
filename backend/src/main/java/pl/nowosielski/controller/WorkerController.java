@@ -22,6 +22,11 @@ public class WorkerController {
         this.workerService = workerService;
     }
 
+    @GetMapping("/currentWorker")
+    public Worker getCurrentUser() {
+        return workerService.getCurrentUser();
+    }
+
     @GetMapping("/list")
     public List<Worker> list() {
         return workerRepository.findAll();
