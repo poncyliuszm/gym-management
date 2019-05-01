@@ -14,6 +14,7 @@ import {
   MatIconRegistry,
   MatInputModule,
   MatListModule,
+  MatMenuModule,
   MatNativeDateModule,
   MatSelectModule,
   MatSidenavModule,
@@ -25,7 +26,7 @@ import {
 import {HomeComponent} from './home/home.component';
 import {ClientService} from "./services/client.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MainNavComponent} from './main-nav/main-nav.component';
+import {DialogChangePassword, MainNavComponent} from './main-nav/main-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {ClientAddComponent} from './clients/client-add/client-add.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -95,6 +96,7 @@ import {MeasurementService} from "./services/measurement.service";
     DeleteTrainerInterviewDialog,
     DeleteExerciseDialog,
     DeleteMeasurementDialog,
+    DialogChangePassword,
     WorkersComponent,
     WorkerAddComponent,
     WorkerEditComponent,
@@ -133,7 +135,8 @@ import {MeasurementService} from "./services/measurement.service";
     DeleteExerciseTypeDialog,
     DeleteTrainerInterviewDialog,
     DeleteExerciseDialog,
-    DeleteMeasurementDialog
+    DeleteMeasurementDialog,
+    DialogChangePassword
   ],
   imports: [
     BrowserModule,
@@ -158,7 +161,8 @@ import {MeasurementService} from "./services/measurement.service";
     MatNativeDateModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   providers: [
     ClientService,

@@ -39,11 +39,14 @@
       <span class="fill-remaining-space"></span>
 
       <span>
-        <button mat-flat-button color="primary" matTooltip="Wyloguj" (click)="logout()">
-          <mat-icon>exit_to_app</mat-icon>
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="changePasswordDialog()" mat-menu-item>Zmiana hasła</button>
+          <button (click)="logout()" mat-menu-item>Wyloguj</button>
+        </mat-menu>
       </span>
-
     </mat-toolbar>
     <router-outlet></router-outlet>
 
