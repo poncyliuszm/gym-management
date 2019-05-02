@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {TicketService} from "../services/ticket.service";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -17,6 +17,9 @@ export class TicketsComponent implements OnInit {
   ticketsDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
+  @ViewChild(MatSort) sort: MatSort;
+
+
   constructor(private http: HttpClient,
               private ticketsService: TicketService,
               private router: Router,
@@ -26,6 +29,10 @@ export class TicketsComponent implements OnInit {
 
   ngOnInit() {
     this.getTickets();
+  }
+
+  applyFilter(filterValue: string) {
+    this.ticketsDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   checkboxLabel(row?: any): string {
@@ -66,8 +73,26 @@ export class TicketsComponent implements OnInit {
     this.ticketsService.list()
       .subscribe((data: any) => {
         let counter = 1;
-        data.forEach(c => c['position'] = counter++);
+        data.forEach(c => {
+          c['position'] = counter++;
+          c['filterClient'] = c.client.name + ' ' + c.client.surname;
+        });
         this.ticketsDataSource = new MatTableDataSource(data);
+        this.ticketsDataSource.sortingDataAccessor = (item: any, property) => {
+          switch (property) {
+            case 'worker':
+              return item.worker.surname;
+            case 'client':
+              return item.client.surname;
+            case 'paymentType':
+              return item.paymentType.name;
+            case 'ticketType':
+              return item.ticketType.name;
+            default:
+              return item[property];
+          }
+        };
+        this.ticketsDataSource.sort = this.sort;
       })
   }
 }

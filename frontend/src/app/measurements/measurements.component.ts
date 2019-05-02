@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -17,6 +17,8 @@ export class MeasurementsComponent implements OnInit {
   measurementsDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private http: HttpClient,
               private measurementService: MeasurementService,
               private router: Router,
@@ -26,6 +28,10 @@ export class MeasurementsComponent implements OnInit {
 
   ngOnInit() {
     this.getMeasurements();
+  }
+
+  applyFilter(filterValue: string) {
+    this.measurementsDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   checkboxLabel(row?: any): string {
@@ -66,8 +72,22 @@ export class MeasurementsComponent implements OnInit {
     this.measurementService.list()
       .subscribe((data: any) => {
         let counter = 1;
-        data.forEach(c => c['position'] = counter++);
+        data.forEach(c => {
+          c['position'] = counter++;
+          c['filterClient'] = c.ticket.client.name + ' ' + c.ticket.client.surname;
+        });
         this.measurementsDataSource = new MatTableDataSource(data);
+        this.measurementsDataSource.sortingDataAccessor = (item: any, property) => {
+          switch (property) {
+            case 'ticket':
+              return item.ticket.client.surname;
+            case 'measurementType':
+              return item.measurementType.name;
+            default:
+              return item[property];
+          }
+        };
+        this.measurementsDataSource.sort = this.sort;
       })
   }
 }

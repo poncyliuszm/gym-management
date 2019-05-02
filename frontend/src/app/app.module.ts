@@ -19,6 +19,7 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
+  MatSortModule,
   MatTableModule,
   MatToolbarModule,
   MatTooltipModule
@@ -162,7 +163,8 @@ import {MeasurementService} from "./services/measurement.service";
     MatSnackBarModule,
     MatDialogModule,
     MatTooltipModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSortModule
   ],
   providers: [
     ClientService,

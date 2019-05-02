@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -17,6 +17,8 @@ export class ExercisesComponent implements OnInit {
   exercisesDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private http: HttpClient,
               private exerciseService: ExerciseService,
               private router: Router,
@@ -26,6 +28,10 @@ export class ExercisesComponent implements OnInit {
 
   ngOnInit() {
     this.getExercises();
+  }
+
+  applyFilter(filterValue: string) {
+    this.exercisesDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   checkboxLabel(row?: any): string {
@@ -66,8 +72,22 @@ export class ExercisesComponent implements OnInit {
     this.exerciseService.list()
       .subscribe((data: any) => {
         let counter = 1;
-        data.forEach(c => c['position'] = counter++);
+        data.forEach(c => {
+          c['position'] = counter++;
+          c['filterClient'] = c.ticket.client.name + ' ' + c.ticket.client.surname;
+        });
         this.exercisesDataSource = new MatTableDataSource(data);
+        this.exercisesDataSource.sortingDataAccessor = (item: any, property) => {
+          switch (property) {
+            case 'ticket':
+              return item.ticket.client.surname;
+            case 'exerciseType':
+              return item.exerciseType.name;
+            default:
+              return item[property];
+          }
+        };
+        this.exercisesDataSource.sort = this.sort;
       })
   }
 }

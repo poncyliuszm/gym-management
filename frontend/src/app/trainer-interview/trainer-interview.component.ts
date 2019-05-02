@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -17,6 +17,8 @@ export class TrainerInterviewComponent implements OnInit {
   trainerInterviewDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private http: HttpClient,
               private trainerInterviewsService: TrainerInterviewService,
               private router: Router,
@@ -26,6 +28,10 @@ export class TrainerInterviewComponent implements OnInit {
 
   ngOnInit() {
     this.getTrainerInterviews();
+  }
+
+  applyFilter(filterValue: string) {
+    this.trainerInterviewDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   checkboxLabel(row?: any): string {
@@ -66,8 +72,22 @@ export class TrainerInterviewComponent implements OnInit {
     this.trainerInterviewsService.list()
       .subscribe((data: any) => {
         let counter = 1;
-        data.forEach(c => c['position'] = counter++);
+        data.forEach(c => {
+          c['position'] = counter++;
+          c['filterClient'] = c.ticket.client.name + ' ' + c.ticket.client.surname;
+        });
         this.trainerInterviewDataSource = new MatTableDataSource(data);
+        this.trainerInterviewDataSource.sortingDataAccessor = (item: any, property) => {
+          switch (property) {
+            case 'worker':
+              return item.worker.surname;
+            case 'ticket':
+              return item.ticket.client.surname;
+            default:
+              return item[property];
+          }
+        };
+        this.trainerInterviewDataSource.sort = this.sort;
       })
   }
 }
