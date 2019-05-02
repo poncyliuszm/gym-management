@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
     Validators.required
   ]);
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private matSnackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -43,7 +46,12 @@ export class LoginComponent implements OnInit {
           return user;
         }
 
-      })
+        },
+        (error: any) => {
+          this.matSnackBar.open("Błedny login lub hasło", "Zamknij", {
+            duration: 3000
+          });
+        })
   }
 
 }
