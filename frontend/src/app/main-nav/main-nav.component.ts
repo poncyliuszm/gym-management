@@ -18,7 +18,7 @@ export class MainNavComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,
               public router: Router,
-              private authService: AuthService,
+              public authService: AuthService,
               private dialog: MatDialog) {
   }
 
@@ -37,7 +37,7 @@ export class MainNavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    this.currentUser = this.authService.currentUser;
   }
 
   changePasswordDialog() {

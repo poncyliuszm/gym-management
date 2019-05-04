@@ -40,9 +40,9 @@ export class LoginComponent implements OnInit {
           this.authService.getCurrentUser()
             .subscribe((data: any) => {
               sessionStorage.setItem('currentUser', JSON.stringify(data));
+              this.authService.currentUser = data;
+              this.router.navigate(['/home']);
             });
-
-          this.router.navigate(['/home']);
           return user;
         }
 

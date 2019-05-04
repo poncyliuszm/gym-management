@@ -6,6 +6,8 @@ import {environment} from "../../environments/environment";
 @Injectable()
 export class AuthService {
 
+  currentUser;
+
   constructor(private http: HttpClient, private router: Router) {
   }
 
@@ -22,6 +24,7 @@ export class AuthService {
 
   logout() {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 
