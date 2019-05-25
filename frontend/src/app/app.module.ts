@@ -76,6 +76,8 @@ import {DeleteMeasurementDialog, MeasurementsComponent} from "./measurements/mea
 import {MeasurementEditComponent} from "./measurements/measurement-edit/measurement-edit.component";
 import {MeasurementAddComponent} from "./measurements/measurement-add/measurement-add.component";
 import {MeasurementService} from "./services/measurement.service";
+import {TrainerViewComponent} from './trainer-view/trainer-view.component';
+import {TrainerViewService} from "./services/trainer-view.service";
 
 
 @NgModule({
@@ -124,7 +126,8 @@ import {MeasurementService} from "./services/measurement.service";
     ExerciseEditComponent,
     MeasurementsComponent,
     MeasurementAddComponent,
-    MeasurementEditComponent
+    MeasurementEditComponent,
+    TrainerViewComponent
   ],
   entryComponents: [
     DeleteClientDialog,
@@ -182,6 +185,7 @@ import {MeasurementService} from "./services/measurement.service";
     TrainerInterviewService,
     ExerciseService,
     MeasurementService,
+    TrainerViewService,
     {provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true}
 
   ],

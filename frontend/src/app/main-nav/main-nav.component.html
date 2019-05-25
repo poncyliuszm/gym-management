@@ -55,6 +55,9 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+          <button *ngIf="authService.currentUser?.role?.name == 'Trener'" mat-menu-item routerLink="/trainerView">
+             Analiza
+           </button>
           <button (click)="changePasswordDialog()" mat-menu-item>Zmiana hasła</button>
           <button (click)="logout()" mat-menu-item>Wyloguj</button>
         </mat-menu>

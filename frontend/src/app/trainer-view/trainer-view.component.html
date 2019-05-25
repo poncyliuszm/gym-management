@@ -1,0 +1,43 @@
+<div style="width: 80%;margin: 25px auto auto;">
+  <mat-form-field style="width: 100%">
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filtr">
+  </mat-form-field>
+</div>
+
+<div class="evidence">
+
+  <table [dataSource]="trainerInterviewDataSource" class="mat-elevation-z8" mat-table matSort style="width: 90%">
+
+    <ng-container matColumnDef="position">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Nr.</th>
+      <td *matCellDef="let element" mat-cell> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Imię klienta</th>
+      <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Nazwisko klienta</th>
+      <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateFrom">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Data wprowadzenia wywiadu</th>
+      <td *matCellDef="let element" mat-cell> {{element.dateFrom}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="description">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Opis</th>
+      <td *matCellDef="let element" mat-cell> {{element.description}}</td>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+
+</div>
+

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ClientsComponent} from "./clients/clients.component";
 import {HomeComponent} from "./home/home.component";
 import {ClientAddComponent} from "./clients/client-add/client-add.component";
@@ -33,6 +33,7 @@ import {ExerciseEditComponent} from "./exercises/exercise-edit/exercise-edit.com
 import {MeasurementsComponent} from "./measurements/measurements.component";
 import {MeasurementAddComponent} from "./measurements/measurement-add/measurement-add.component";
 import {MeasurementEditComponent} from "./measurements/measurement-edit/measurement-edit.component";
+import {TrainerViewComponent} from "./trainer-view/trainer-view.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -67,7 +68,8 @@ const routes: Routes = [
   {path: 'exercises/edit/:id', component: ExerciseEditComponent, canActivate: [AuthGuard]},
   {path: 'measurements', component: MeasurementsComponent, canActivate: [AuthGuard]},
   {path: 'measurements/add', component: MeasurementAddComponent, canActivate: [AuthGuard]},
-  {path: 'measurements/edit/:id', component: MeasurementEditComponent, canActivate: [AuthGuard]}
+  {path: 'measurements/edit/:id', component: MeasurementEditComponent, canActivate: [AuthGuard]},
+  {path: 'trainerView', component: TrainerViewComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
