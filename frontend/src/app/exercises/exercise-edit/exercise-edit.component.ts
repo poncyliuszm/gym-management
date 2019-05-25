@@ -31,7 +31,7 @@ export class ExerciseEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getExerciseTypes();
+    this.getActiveExerciseTypes();
     this.getTickets();
     this.activatedRoute.params.subscribe(params => {
       this.exerciseId = +params['id'];
@@ -58,8 +58,8 @@ export class ExerciseEditComponent implements OnInit {
     }
   }
 
-  private getExerciseTypes() {
-    this.exerciseTypeService.list()
+  private getActiveExerciseTypes() {
+    this.exerciseTypeService.getActiveExerciseTypes()
       .subscribe((data: any) => {
         this.exerciseTypes = data;
       })

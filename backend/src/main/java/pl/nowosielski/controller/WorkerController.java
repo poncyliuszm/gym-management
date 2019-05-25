@@ -32,6 +32,11 @@ public class WorkerController {
         return workerRepository.findAll();
     }
 
+    @GetMapping("/getActiveWorkers")
+    public List<Worker> getActiveWorkers() {
+        return workerRepository.findByStatus(true);
+    }
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @GetMapping("/{id}")
     public Worker getOne(@PathVariable("id") Integer id) {

@@ -20,7 +20,8 @@ export class WorkerEditComponent implements OnInit {
     date: "",
     address: "",
     phone: "",
-    email: ""
+    email: "",
+    status: ""
   };
   workerId;
   roles;

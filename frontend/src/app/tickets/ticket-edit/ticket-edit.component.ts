@@ -43,10 +43,10 @@ export class TicketEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getClients();
+    this.getActiveClients();
     this.getPaymentTypes();
     this.getTicketTypes();
-    this.getWorkers();
+    this.getActiveWorkers();
     this.activatedRoute.params.subscribe(params => {
       this.ticketId = +params['id'];
       this.ticketService.getTicket(this.ticketId)
@@ -74,8 +74,8 @@ export class TicketEditComponent implements OnInit {
   }
 
 
-  private getClients() {
-    this.clientService.list()
+  private getActiveClients() {
+    this.clientService.getActiveClients()
       .subscribe((data: any) => {
         this.clients = data;
       })
@@ -96,8 +96,8 @@ export class TicketEditComponent implements OnInit {
 
   }
 
-  private getWorkers() {
-    this.workerService.list()
+  private getActiveWorkers() {
+    this.workerService.getActiveWorkers()
       .subscribe((data: any) => {
         this.workers = data;
       })

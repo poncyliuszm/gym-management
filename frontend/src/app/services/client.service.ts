@@ -13,6 +13,10 @@ export class ClientService {
     return this.http.get(environment.appContext + '/client/list');
   }
 
+  getActiveClients() {
+    return this.http.get(environment.appContext + '/client/getActiveClients');
+  }
+
   save(user: any) {
     return this.http.post(environment.appContext + '/client/save', user);
   }

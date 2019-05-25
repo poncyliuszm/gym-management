@@ -13,6 +13,10 @@ export class WorkerService {
     return this.http.get(environment.appContext + '/worker/list');
   }
 
+  getActiveWorkers() {
+    return this.http.get(environment.appContext + '/worker/getActiveWorkers');
+  }
+
   save(worker: any) {
     return this.http.post(environment.appContext + '/worker', worker);
   }

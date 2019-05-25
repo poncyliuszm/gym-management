@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSource} from "@angular/material";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
-import {ClientService} from "../services/client.service";
 import {Router} from "@angular/router";
 import {WorkerService} from "../services/worker.service";
 
@@ -12,7 +11,7 @@ import {WorkerService} from "../services/worker.service";
   styleUrls: ['./workers.component.css']
 })
 export class WorkersComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'login', 'name', 'surname', 'role', 'address', 'phone', 'email'];
+  displayedColumns: string[] = ['select', 'position', 'login', 'name', 'surname', 'role', 'address', 'phone', 'email', 'status'];
   workersDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 

@@ -24,6 +24,11 @@ public class ExerciseTypeController {
         return this.exerciseTypeRepository.findAll();
     }
 
+    @GetMapping("/getActiveExerciseTypes")
+    public List<ExerciseType> getActiveExerciseTypes() {
+        return this.exerciseTypeRepository.findByStatus(true);
+    }
+
     @PostMapping
     public void save(@RequestBody ExerciseType exerciseType) {
         this.exerciseTypeRepository.save(exerciseType);

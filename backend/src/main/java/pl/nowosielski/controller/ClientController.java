@@ -7,7 +7,6 @@ import pl.nowosielski.model.Client;
 import pl.nowosielski.repository.ClientRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/client")
@@ -23,6 +22,11 @@ public class ClientController {
     @GetMapping("/list")
     public List<Client> list() {
         return clientRepository.findAll();
+    }
+
+    @GetMapping("/getActiveClients")
+    public List<Client> getActiveClients() {
+        return clientRepository.findByStatus(true);
     }
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

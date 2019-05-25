@@ -12,7 +12,7 @@ import {ExerciseTypeService} from "../services/exercise-type.service";
 })
 export class ExerciseTypesComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'description'];
+  displayedColumns: string[] = ['select', 'position', 'name', 'description', 'status'];
   exerciseTypesDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 

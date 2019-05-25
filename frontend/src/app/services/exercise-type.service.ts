@@ -11,6 +11,10 @@ export class ExerciseTypeService {
     return this.http.get(environment.appContext + '/exerciseType');
   }
 
+  getActiveExerciseTypes() {
+    return this.http.get(environment.appContext + '/exerciseType/getActiveExerciseTypes');
+  }
+
   save(exerciseType: any) {
     return this.http.post(environment.appContext + '/exerciseType', exerciseType);
   }

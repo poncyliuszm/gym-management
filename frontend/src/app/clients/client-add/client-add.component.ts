@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {ClientService} from "../../services/client.service";
 import {MatSnackBar} from "@angular/material";
@@ -15,7 +15,8 @@ export class ClientAddComponent implements OnInit {
     date: "",
     address: "",
     phone: "",
-    email: ""
+    email: "",
+    status: ""
   };
 
 

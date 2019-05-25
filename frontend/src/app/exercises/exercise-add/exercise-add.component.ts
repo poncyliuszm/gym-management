@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
-import {WorkerService} from "../../services/worker.service";
 import {MatSnackBar} from "@angular/material";
-import {TrainerInterviewService} from "../../services/trainer-interview.service";
 import {ExerciseService} from "../../services/exercise.service";
 import {ExerciseTypeService} from "../../services/exercise-type.service";
 
@@ -32,7 +30,7 @@ export class ExerciseAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getExerciseTypes();
+    this.getActiveExerciseTypes();
     this.getTickets();
   }
 
@@ -52,8 +50,8 @@ export class ExerciseAddComponent implements OnInit {
     }
   }
 
-  private getExerciseTypes() {
-    this.exerciseTypeService.list()
+  private getActiveExerciseTypes() {
+    this.exerciseTypeService.getActiveExerciseTypes()
       .subscribe((data: any) => {
         this.exerciseTypes = data;
       })

@@ -11,7 +11,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar, MatTableDataSourc
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'position', 'name', 'surname', 'address', 'phone', 'email'];
+  displayedColumns: string[] = ['select', 'position', 'name', 'surname', 'address', 'phone', 'email', 'status'];
   clientsDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 

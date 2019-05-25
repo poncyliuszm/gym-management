@@ -42,10 +42,10 @@ export class TicketAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getClients();
+    this.getActiveClients();
     this.getPaymentTypes();
     this.getTicketTypes();
-    this.getWorkers();
+    this.getActiveWorkers();
   }
 
   goBack() {
@@ -64,8 +64,8 @@ export class TicketAddComponent implements OnInit {
     }
   }
 
-  private getClients() {
-    this.clientService.list()
+  private getActiveClients() {
+    this.clientService.getActiveClients()
       .subscribe((data: any) => {
         this.clients = data;
       })
@@ -86,8 +86,8 @@ export class TicketAddComponent implements OnInit {
 
   }
 
-  private getWorkers() {
-    this.workerService.list()
+  private getActiveWorkers() {
+    this.workerService.getActiveWorkers()
       .subscribe((data: any) => {
         this.workers = data;
       })

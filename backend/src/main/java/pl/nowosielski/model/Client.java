@@ -30,6 +30,9 @@ public class Client {
     @Column(name = "E_mail")
     private String email;
 
+    @Column(name = "statuss")
+    private Boolean status;
+
     public Integer getId() {
         return id;
     }
@@ -84,5 +87,13 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

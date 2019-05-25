@@ -52,6 +52,13 @@
                       <input [(ngModel)]="user.email" id="email" matInput name="email" placeholder="E-mail" required
                              type="text">
                     </mat-form-field>
+
+                    <mat-form-field class="width-100">
+                      <mat-select [(ngModel)]="user.status" name="status" placeholder="Status" required>
+                        <mat-option [value]="true">Dostępny</mat-option>
+                        <mat-option [value]="false">Niedostępny</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
                 </div>
               </div>

@@ -12,7 +12,8 @@ export class ExerciseTypeEditComponent implements OnInit {
 
   exerciseType = {
     name: "",
-    description: ""
+    description: "",
+    status: ""
   };
   exerciseTypeId;
 

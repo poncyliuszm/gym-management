@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 import {WorkerService} from "../../services/worker.service";
 import {MatSnackBar} from "@angular/material";
 import {RoleService} from "../../services/role.service";
@@ -20,7 +20,9 @@ export class WorkerAddComponent implements OnInit {
     date: "",
     address: "",
     phone: "",
-    email: ""
+    email: "",
+    status: ""
+
   };
   roles;
 

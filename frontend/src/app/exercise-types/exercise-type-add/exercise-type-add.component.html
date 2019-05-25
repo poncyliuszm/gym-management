@@ -35,6 +35,12 @@
                                 required>
                       </textarea>
                     </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <mat-select [(ngModel)]="exerciseType.status" name="status" placeholder="Status" required>
+                        <mat-option [value]="true">Dostępny</mat-option>
+                        <mat-option [value]="false">Niedostępny</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
                 </div>
               </div>

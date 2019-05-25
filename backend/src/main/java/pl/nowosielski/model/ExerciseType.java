@@ -17,6 +17,9 @@ public class ExerciseType {
     @Column(name = "Opis")
     private String description;
 
+    @Column(name = "statuss")
+    private Boolean status;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +42,13 @@ public class ExerciseType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

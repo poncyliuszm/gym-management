@@ -46,6 +46,9 @@ public class Worker {
     @JoinColumn(name = "Id_Specjalizacja", insertable = false, updatable = false)
     private Role role;
 
+    @Column(name = "statuss")
+    private Boolean status;
+
     public Worker() {
     }
 
@@ -61,6 +64,7 @@ public class Worker {
         this.email = worker.email;
         this.roleId = worker.roleId;
         this.role = worker.role;
+        this.status = worker.status;
     }
 
     public Integer getId() {
@@ -151,5 +155,13 @@ public class Worker {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }
