@@ -70,7 +70,7 @@ export class TicketsComponent implements OnInit {
   }
 
   private getTickets() {
-    this.ticketsService.list()
+    this.ticketsService.getTicketsForActiveClientsAndActiveWorkers()
       .subscribe((data: any) => {
         let counter = 1;
         data.forEach(c => {

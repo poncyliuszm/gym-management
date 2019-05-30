@@ -12,6 +12,14 @@ export class TicketService {
     return this.http.get(environment.appContext + '/ticket');
   }
 
+  getTicketsForActiveClients() {
+    return this.http.get(environment.appContext + '/ticket/activeClients');
+  }
+
+  getTicketsForActiveClientsAndActiveWorkers() {
+    return this.http.get(environment.appContext + '/ticket/getTicketsForActiveClientsAndActiveWorkers');
+  }
+
   save(ticket: any) {
     return this.http.post(environment.appContext + '/ticket', ticket);
   }
@@ -26,9 +34,5 @@ export class TicketService {
 
   delete(id: any) {
     return this.http.delete(environment.appContext + '/ticket/' + id);
-  }
-
-  getTicketsForActiveClients() {
-    return this.http.get(environment.appContext + '/ticket/activeClients');
   }
 }

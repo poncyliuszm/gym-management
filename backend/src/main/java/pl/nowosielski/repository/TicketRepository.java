@@ -10,4 +10,6 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket, Integer> {
 
     List<Ticket> findByClient_status(Boolean status);
+
+    List<Ticket> findByClient_statusAndWorker_status(Boolean clientStatus, Boolean workerStatus);
 }
