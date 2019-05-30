@@ -2,7 +2,6 @@ package pl.nowosielski.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.nowosielski.model.Ticket;
 import pl.nowosielski.repository.TicketRepository;
@@ -19,6 +18,11 @@ public class TicketController {
     @GetMapping
     public List<Ticket> list() {
         return ticketRepository.findAll();
+    }
+
+    @GetMapping("/activeClients")
+    public List<Ticket> findTicketsForActiveClients() {
+        return ticketRepository.findByClient_status(true);
     }
 
     @GetMapping("/{id}")

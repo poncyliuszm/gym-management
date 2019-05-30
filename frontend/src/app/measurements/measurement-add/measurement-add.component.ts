@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TicketService} from "../../services/ticket.service";
-import {WorkerService} from "../../services/worker.service";
 import {MatSnackBar} from "@angular/material";
-import {TrainerInterviewService} from "../../services/trainer-interview.service";
-import {ExerciseService} from "../../services/exercise.service";
-import {ExerciseTypeService} from "../../services/exercise-type.service";
 import {MeasurementService} from "../../services/measurement.service";
 import {MeasurementTypeService} from "../../services/maesurement-type.service";
 
@@ -63,7 +59,7 @@ export class MeasurementAddComponent implements OnInit {
   }
 
   private getTickets() {
-    this.ticketService.list()
+    this.ticketService.getTicketsForActiveClients()
       .subscribe((data: any) => {
         this.tickets = data;
       })
