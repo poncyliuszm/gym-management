@@ -34,6 +34,7 @@ import {MeasurementsComponent} from "./measurements/measurements.component";
 import {MeasurementAddComponent} from "./measurements/measurement-add/measurement-add.component";
 import {MeasurementEditComponent} from "./measurements/measurement-edit/measurement-edit.component";
 import {TrainerViewComponent} from "./trainer-view/trainer-view.component";
+import {ReceptionistViewComponent} from "./receptionist-view/receptionist-view.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -69,7 +70,8 @@ const routes: Routes = [
   {path: 'measurements', component: MeasurementsComponent, canActivate: [AuthGuard]},
   {path: 'measurements/add', component: MeasurementAddComponent, canActivate: [AuthGuard]},
   {path: 'measurements/edit/:id', component: MeasurementEditComponent, canActivate: [AuthGuard]},
-  {path: 'trainerView', component: TrainerViewComponent, canActivate: [AuthGuard]}
+  {path: 'trainerView', component: TrainerViewComponent, canActivate: [AuthGuard]},
+  {path: 'receptionistView', component: ReceptionistViewComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

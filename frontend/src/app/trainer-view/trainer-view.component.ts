@@ -13,7 +13,7 @@ export class TrainerViewComponent implements OnInit {
 
   displayedColumns: string[] =
     ['position', 'name', 'surname', 'dateFrom', 'description'];
-  trainerInterviewDataSource = new MatTableDataSource();
+  trainerViewDataSource = new MatTableDataSource();
   selection = new SelectionModel<any>(false, []);
 
   @ViewChild(MatSort) sort: MatSort;
@@ -27,7 +27,7 @@ export class TrainerViewComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.trainerInterviewDataSource.filter = filterValue.trim().toLowerCase();
+    this.trainerViewDataSource.filter = filterValue.trim().toLowerCase();
   }
 
   private getTrainerView() {
@@ -37,8 +37,8 @@ export class TrainerViewComponent implements OnInit {
         data.forEach(c => {
           c['position'] = counter++;
         });
-        this.trainerInterviewDataSource = new MatTableDataSource(data);
-        this.trainerInterviewDataSource.sortingDataAccessor = (item: any, property) => {
+        this.trainerViewDataSource = new MatTableDataSource(data);
+        this.trainerViewDataSource.sortingDataAccessor = (item: any, property) => {
           switch (property) {
             case 'worker':
               return item.worker.surname;
@@ -48,7 +48,7 @@ export class TrainerViewComponent implements OnInit {
               return item[property];
           }
         };
-        this.trainerInterviewDataSource.sort = this.sort;
+        this.trainerViewDataSource.sort = this.sort;
       })
   }
 }

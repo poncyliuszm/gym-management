@@ -6,21 +6,31 @@
 
 <div class="evidence">
 
-  <table [dataSource]="trainerViewDataSource" class="mat-elevation-z8" mat-table matSort style="width: 90%">
+  <table [dataSource]="receptionistViewDataSource" class="mat-elevation-z8" mat-table matSort style="width: 90%">
 
     <ng-container matColumnDef="position">
       <th *matHeaderCellDef mat-header-cell mat-sort-header> Nr.</th>
       <td *matCellDef="let element" mat-cell> {{element.position}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="clientName">
       <th *matHeaderCellDef mat-header-cell mat-sort-header> Imię klienta</th>
-      <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+      <td *matCellDef="let element" mat-cell> {{element.clientName}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="surname">
+    <ng-container matColumnDef="clientSurname">
       <th *matHeaderCellDef mat-header-cell mat-sort-header> Nazwisko klienta</th>
-      <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+      <td *matCellDef="let element" mat-cell> {{element.clientSurname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="workerName">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Imię pracownika</th>
+      <td *matCellDef="let element" mat-cell> {{element.workerName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="workerSurname">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Nazwisko pracownika</th>
+      <td *matCellDef="let element" mat-cell> {{element.workerSurname}} </td>
     </ng-container>
 
     <ng-container matColumnDef="dateFrom">
@@ -29,9 +39,9 @@
     </ng-container>
 
 
-    <ng-container matColumnDef="description">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Opis</th>
-      <td *matCellDef="let element" mat-cell> {{element.description}}</td>
+    <ng-container matColumnDef="timeFrom">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Godzina wprowadzenia</th>
+      <td *matCellDef="let element" mat-cell> {{element.timeFrom}}</td>
     </ng-container>
 
 

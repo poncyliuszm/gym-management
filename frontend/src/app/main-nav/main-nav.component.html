@@ -58,6 +58,10 @@
           <button *ngIf="authService.currentUser?.role?.name == 'Trener'" mat-menu-item routerLink="/trainerView">
              Analiza
            </button>
+          <button *ngIf="authService.currentUser?.role?.name == 'Recepcjonista'" mat-menu-item
+                  routerLink="/receptionistView">
+             Analiza
+           </button>
           <button (click)="changePasswordDialog()" mat-menu-item>Zmiana hasła</button>
           <button (click)="logout()" mat-menu-item>Wyloguj</button>
         </mat-menu>
