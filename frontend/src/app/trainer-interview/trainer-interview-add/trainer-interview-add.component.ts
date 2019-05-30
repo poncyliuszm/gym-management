@@ -51,7 +51,7 @@ export class TrainerInterviewAddComponent implements OnInit {
   }
 
   private getWorkers() {
-    this.workerService.list()
+    this.workerService.getActiveWorkers()
       .subscribe((data: any) => {
         this.workers = data;
       })
