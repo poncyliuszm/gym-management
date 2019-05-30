@@ -22,7 +22,7 @@ export class TicketAddComponent implements OnInit {
     timeFrom: "",
     dateTo: "",
     timeTo: "",
-    price: ""
+    price: 0
   };
   clients;
   paymentTypes;

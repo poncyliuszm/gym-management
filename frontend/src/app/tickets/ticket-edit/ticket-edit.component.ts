@@ -22,7 +22,6 @@ export class TicketEditComponent implements OnInit {
     timeFrom: "",
     dateTo: "",
     timeTo: "",
-    price: ""
   };
   ticketId;
   clients;
