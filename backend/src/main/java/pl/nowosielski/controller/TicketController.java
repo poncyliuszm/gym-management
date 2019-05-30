@@ -20,11 +20,6 @@ public class TicketController {
         return ticketRepository.findAll();
     }
 
-    @GetMapping("/activeClients")
-    public List<Ticket> findTicketsForActiveClients() {
-        return ticketRepository.findByClient_status(true);
-    }
-
     @GetMapping("/{id}")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     public Ticket getOne(@PathVariable("id") Integer id) {

@@ -28,7 +28,4 @@ export class TicketService {
     return this.http.delete(environment.appContext + '/ticket/' + id);
   }
 
-  getTicketsForActiveClients() {
-    return this.http.get(environment.appContext + '/ticket/activeClients');
-  }
 }

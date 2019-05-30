@@ -67,7 +67,7 @@ export class MeasurementEditComponent implements OnInit {
   }
 
   private getTickets() {
-    this.ticketService.getTicketsForActiveClients()
+    this.ticketService.list()
       .subscribe((data: any) => {
         this.tickets = data;
       })
